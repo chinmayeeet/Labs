@@ -7,11 +7,21 @@ namespace SampleWebApp.Controllers
     
     public class PersonController : Controller
     {
-        [HttpGet("/people")]
+        [HttpGet("/people", Name ="GetPeople", Order = 1)]
+        [HttpGet("/person", Name ="DisplayPeople", Order = 2)]
         public IActionResult GetPeople()
         {
             var people = PersonOp.GetPeople();
+            var uri = Url.Link("DisplayPeople",people);
+            return Created(uri, people);
             return View("PeopleList", people);
+        }
+
+        public IActionResult AccessRoute()
+        {
+            var response = HttpContext.Response;
+            var uri = Url.Link("GetPeople", "created");
+            return Created(uri, "created");
         }
 
         [HttpGet("/search/{pAadhar}")]
