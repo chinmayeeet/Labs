@@ -8,27 +8,31 @@ using System.Text;
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
+builder.Services.AddCors(options =>
+{ 
+    options.AddPolicy(name: "MyPolicy", policy =>
+    {
+        policy.AllowAnyOrigin()
+
+        .AllowAnyMethod();
+    });
+});
 
 var tokenKey = builder.Configuration.GetValue<string>("TokenKey");
 
 var key = Encoding.ASCII.GetBytes(tokenKey);
 
-
-
 builder.Services.AddAuthentication(x =>
 
 {
-
     x.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
 
     x.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-
 })
 
 .AddJwtBearer(x =>
 
 {
-
     x.RequireHttpsMetadata = false;
 
     x.SaveToken = true;
@@ -36,7 +40,6 @@ builder.Services.AddAuthentication(x =>
     x.TokenValidationParameters = new TokenValidationParameters
 
     {
-
         ValidateIssuerSigningKey = true,
 
         IssuerSigningKey = new SymmetricSecurityKey(key),
@@ -66,6 +69,7 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+app.UseCors();
 
 app.UseAuthentication();
 

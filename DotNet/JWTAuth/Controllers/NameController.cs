@@ -1,10 +1,12 @@
 ﻿using JWTAuth.Models;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Cors;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace JWTAuth.Controllers
 {
+    [EnableCors("MyPolicy")]
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
