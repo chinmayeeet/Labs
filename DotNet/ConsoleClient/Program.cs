@@ -1,4 +1,5 @@
 ﻿// See https://aka.ms/new-console-template for more information
+using Newtonsoft.Json;
 using RestSharp;
 
 Console.WriteLine("Hello, World!");
@@ -12,7 +13,15 @@ req1.AddJsonBody(new
 });
 
 var response1 = client.Execute(req1);
-Console.WriteLine(response1.Content);
+var token = JsonConvert.DeserializeObject<string>(response1.Content);
+Console.WriteLine(token);
+
+RestRequest req2 = new RestRequest("https://localhost:7280/api/Name", Method.Get);
+client.AddDefaultHeader("Authorization", $"Bearer {token}");
+
+var response2 = client.Execute(req2);
+var content = response2.Content;
+Console.WriteLine(content);
 
 
 Console.ReadLine(); //type enter to exit the application
