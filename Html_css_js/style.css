@@ -1,0 +1,18 @@
+.title {
+    background-color: #78909C;
+    color: beige;
+    padding: 15px;
+    border-radius: 5px;
+    box-shadow: 6px 6px 6px 5px grey;
+    font-family: monospace;
+}
+
+.span {
+    background-color: #78909C;
+    color: ivory;
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 5px 5px 4px 3px grey;
+    margin-left: 50px;
+    margin-top: 10px;
+}
