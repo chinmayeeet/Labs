@@ -1,10 +1,35 @@
+<body>
 <h2>Add a new person</h2>
 <hr/>
+<h3>Using Interpolation Binding</h3>
 <h5>{{greeting}}</h5>
 <span>App Rating: {{5*12/100}}</span>
 <hr/>
 <span>Calculate your age in dog years: {{CalculateDogYears(22)}}</span>
 <hr/>
 Recently Joined: {{p.name}} with aadhar no. {{p.aadhar}} of age {{p.age}} joined.
-<span>Which state do you belong to?</span> <input type="text"/>
-<button>Done</button>
+<br/>
+<hr/>
+<h3>Using Square Bracket Binding - Attribute/Direct Binding: TS->HTML</h3>
+<span>Which state do you belong to?</span> <input type="text" class="form-control" [value] = "state"/>
+<button class="button"(click) = "handleClick(state)">Done</button>
+<p>{{status}}</p>
+<hr/>
+<h3>Add the new person using ngModel [()] binding</h3>
+<form>
+    <input type="text" name="aadhar" class="form-control" placeholder="Enter aadhar" [(ngModel)]="p.aadhar"/>
+    Value in code:{{p.aadhar}}
+    <br/>
+    <input type="text" name="name" class="form-control" placeholder="Enter your name" [(ngModel)]="p.name"/>
+    Value in code:{{p.name}}
+    <br/>
+    <input type="number" name="age"  class="form-control" placeholder="Enter your age" [(ngModel)]="p.age"/>
+    Value in code:{{p.age}}
+    <br/>
+    <input type="checkbox" class="form-check-input" name="isAlive" [(ngModel)] = "p.isAlive"/>
+    Value in code:{{p.isAlive}}
+    <br/>
+    <button class="button"(click)="addPerson(p.aadhar,p.name,p.age,p.isAlive)">Add</button>
+    <span>{{status}}</span>
+</form>
+</body>

@@ -1,0 +1,15 @@
+.ng-pristine .ng-untouched{
+    background-color: pink
+}
+
+.ng-dirty .ng-touched{
+    background-color:rgb(107, 18, 30);
+}
+
+.ng-valid{
+    color:chartreuse;
+}
+
+.ng-invalid{
+    color:rgb(92, 15, 56);
+}

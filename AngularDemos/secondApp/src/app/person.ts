@@ -15,17 +15,17 @@ export class Person {
     protected awardsReceived:any[] = []; //c# array
 
     public static People:Person[] = [];//static not allowed in js
-    public GetPeople():Person[]{
+    public static GetPeople():Person[]{
         if(Person.People.length == 0){
-            Person.People.push(new Person("AABB324156757865", "Seema", 28)); //not using this. since people is static
-            Person.People.push(new Person("CCBB9241567578995", "Teema", 11));
-            Person.People.push(new Person("BVBB324156758365", "Reema", 40));
+            Person.People.push(new Person("AABB324156757865", "Zach", 28)); //not using this. since people is static
+            Person.People.push(new Person("CCBB9241567578995", "Jake", 11));
+            Person.People.push(new Person("BVBB324156758365", "Anne", 40));
         }
 
         return Person.People;
     }
 
-    public AddPerson(person:Person):boolean{
+    public static AddPerson(person:Person):boolean{
         //Add him to Person.People array
         if(person==undefined){
             return false;
